@@ -45,4 +45,4 @@ def predict(image_path: str):
         print("Vision Attention Mask sample:", vision_attn_mask[0, :10])
 
 if __name__ == "__main__":
-    predict("/home/adminpc/xgen-mm-phi3-mini-instruct-interleave-r-v1.5-vn/test/test-sample/image-2.jpeg")
+    predict("/home/adminpc/xgen-mm-phi3-mini-instruct-interleave-r-v1.5-vn/training/test-sample/image-2.jpeg")
