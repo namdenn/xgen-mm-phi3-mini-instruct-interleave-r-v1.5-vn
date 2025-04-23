@@ -24,6 +24,11 @@ def predict(image_path: str):
 
     with torch.no_grad():
         image_features = encoder_model(img_tensor)
+        print(image_features)
+        print(image_features.shape)
+        image_features = image_features.unsqueeze(1).unsqueeze(2).unsqueeze(2)  
+        print(image_features.shape)
+
 
     tokenizer_config = XGenMMVisionTokenizerConfig(
         vis_feature_dim=image_features.shape[-1],
@@ -35,14 +40,9 @@ def predict(image_path: str):
     with torch.no_grad():
         image_tokens = tokenizer_model(image_features, vision_attn_masks=None)
 
-        # Grab the internal PerceiverAttention module
-        perceiver = tokenizer_model.perceiver  # Change if needed
-        vision_attn_mask = perceiver.attn.latest_vision_attn_mask
-
-        print("Visual Features:", image_features.shape)
         print("Visual Tokens (first 5):", image_tokens[0, :5])
-        print("Vision Attention Mask shape:", vision_attn_mask.shape)
-        print("Vision Attention Mask sample:", vision_attn_mask[0, :10])
+        # print("Vision Attention Mask shape:", vision_attn_mask.shape)
+        # print("Vision Attention Mask sample:", vision_attn_mask[0, :10])
 
 if __name__ == "__main__":
     predict("/home/adminpc/xgen-mm-phi3-mini-instruct-interleave-r-v1.5-vn/training/test-sample/image-2.jpeg")
