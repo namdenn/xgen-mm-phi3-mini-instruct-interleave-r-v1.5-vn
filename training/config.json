@@ -1,0 +1,26 @@
+{
+    "architectures": [
+      "XGenMMModelForConditionalGeneration"
+    ],
+    "auto_map": {
+      "AutoConfig": "modeling_xgenmm.XGenMMConfig",
+      "AutoModelForVision2Seq": "modeling_xgenmm.XGenMMModelForConditionalGeneration"
+    },
+    "model_type": "xgenmm",
+    "text_config": {
+      "initial_tokenizer_len": 32012,
+      "model_type": "phi3",
+      "sliding_window": 2047,
+      "torch_dtype": "bfloat16"
+    },
+    "torch_dtype": "bfloat16",
+    "transformers_version": "4.44.2",
+    "vision_encoder_config": {
+      "anyres_patch_sampling": true,
+      "image_aspect_ratio": "anyres",
+      "model_type": "xgenmm_vision_encoder"
+    },
+    "vision_tokenizer_config": {
+      "model_type": "xgenmm_vision_tokenizer"
+    }
+  }
